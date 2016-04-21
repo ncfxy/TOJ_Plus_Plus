@@ -14,12 +14,14 @@ public class divFile{
 	
 	public static void divInput(String IFName,String OFName,String ExName) throws IOException, InterruptedException{
 		IFLen = OFLen = curInLen = curOutLen = prvInLen = prvOutLen = FileIndex = 0;
-		BufferedReader IFin = new BufferedReader(new FileReader(IFName));
-		BufferedReader OFin = new BufferedReader(new FileReader(IFName));
+		FileReader ifst = new FileReader(IFName);
+		FileReader ofst = new FileReader(OFName);
+		BufferedReader IFin = new BufferedReader(ifst);
+		BufferedReader OFin = new BufferedReader(ofst);
 		while((ipt[IFLen]=IFin.readLine()) != null){
 			IFLen++;
 		}
-		while((opt[IFLen]=OFin.readLine()) != null){
+		while((opt[OFLen]=OFin.readLine()) != null){
 			OFLen++;
 		}
 		String arg = new String("");
@@ -40,7 +42,7 @@ public class divFile{
 			fout = new BufferedWriter(new FileWriter("tempFile.out"));
 			fout.close();
 			
-			cmd.operate("source.exe < tempFile.in > tempFile.out" + "\n");
+			cmd.operate("apb.exe < tempFile.in > tempFile.out" + "\n");
 			Thread.sleep(1000);
 			Character terminate;
 			terminate = 3;

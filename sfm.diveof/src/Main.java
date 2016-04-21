@@ -11,7 +11,7 @@ public class Main {
 		//ExecFileName = cin.next();
 		InputFileName = "ab.in";
 		OutputFileName = "ab.out";
-		ExecFileName = "source.exe";
+		ExecFileName = "apb.exe";
 		divFile.divInput(InputFileName,OutputFileName,ExecFileName);
 		//cin.close();
 	}
