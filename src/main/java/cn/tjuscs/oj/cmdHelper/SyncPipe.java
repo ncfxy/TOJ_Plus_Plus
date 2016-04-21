@@ -1,3 +1,5 @@
+package cn.tjuscs.oj.cmdHelper;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 
