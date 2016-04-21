@@ -1,3 +1,5 @@
+package sfm.diveof.shifengming;
+
 import java.lang.Process;
 import java.util.Scanner;
 import java.io.*;

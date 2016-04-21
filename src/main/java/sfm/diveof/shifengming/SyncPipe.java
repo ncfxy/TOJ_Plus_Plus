@@ -1,3 +1,5 @@
+package sfm.diveof.shifengming;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 
