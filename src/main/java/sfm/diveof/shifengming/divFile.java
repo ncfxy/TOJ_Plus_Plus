@@ -3,79 +3,35 @@ package sfm.diveof.shifengming;
 import java.lang.Process;
 import java.util.Scanner;
 import java.io.*;
+>>>>>>> refs/remotes/ncfxy/master:src/main/java/sfm/diveof/shifengming/divFile.java
 
-public class divFile{
-	public static final int MAX_LINE = 100000;
-	public static String[] ipt = new String[MAX_LINE];
-	public static String[] opt = new String[MAX_LINE];
-	public static String[] tmp = new String[MAX_LINE];
-	public static String tmpFileName = "tempFile.in";
-	public static String Split = "split";
-	public static int IFLen,OFLen,curInLen,curOutLen,prvInLen,prvOutLen,FileIndex;
-	
-	
-	public static void divInput(String IFName,String OFName,String ExName) throws IOException, InterruptedException{
-		IFLen = OFLen = curInLen = curOutLen = prvInLen = prvOutLen = FileIndex = 0;
-		FileReader ifst = new FileReader(IFName);
-		FileReader ofst = new FileReader(OFName);
-		BufferedReader IFin = new BufferedReader(ifst);
-		BufferedReader OFin = new BufferedReader(ofst);
-		while((ipt[IFLen]=IFin.readLine()) != null){
-			IFLen++;
-		}
-		while((opt[OFLen]=OFin.readLine()) != null){
-			OFLen++;
-		}
-		String arg = new String("");
-		
-		Cmd cmd = new Cmd(null);
-		arg = ipt[0];
-		curInLen = 1;
-		for(int i=1;i<=IFLen;i++){
-			curOutLen = 0;
-			for(;curInLen<i;curInLen++){
-				arg = arg + "\n" + ipt[curInLen];
-			}
-			
-			BufferedWriter fout = new BufferedWriter(new FileWriter(tmpFileName));
-			fout.write(arg);
-			fout.flush();
-			fout.close();
-			fout = new BufferedWriter(new FileWriter("tempFile.out"));
-			fout.close();
-			
-			cmd.operate("apb.exe < tempFile.in > tempFile.out" + "\n");
-			Thread.sleep(1000);
-			Character terminate;
-			terminate = 3;
-			cmd.operate(terminate.toString());
-			BufferedReader getOut = new BufferedReader(new FileReader("tempFile.out"));
-			while( (tmp[curOutLen]=getOut.readLine()) != null ){
-				System.out.println(tmp[curOutLen]);
-				curOutLen++;
-			}
-			System.out.println(curOutLen);
-			if(curOutLen > prvOutLen && isprefix()){
-				fout = new BufferedWriter(new FileWriter(Split+FileIndex+".out"));
-				for(;prvInLen < curInLen;prvInLen++){
-					fout.write(ipt[prvInLen]);
-					fout.write("\n");
-					fout.flush();
-				}
-				FileIndex++;
-				prvOutLen = curOutLen;
-				System.out.println("A file is created");
-			}
-			getOut.close();
-		}
-		IFin.close();
-		OFin.close();
+public class DivFile {
+	String CodePath,ExePath,InputPath,OutPutPath;
+	List<String> DonePaths;
+
+	public static String GetCodePath(){
+		return String("");
+	}
+	public static String GetInputPath(){
+		return String("");
+	}
+	public static String GetOutputPath(){
+		return String("");
+	}
+	public static String CandB(String CodePath){
+		return String("")
 	}
 	
-	public static boolean isprefix(){
-		for(int i=0;i<curOutLen;i++){
-			if(!opt[i].equals(tmp[i])) return false;
-		}
-		return true;
+	public static List<String> divfile(){
+		CodePath = GetCodePath();
+		InputPath = GetInputPath();
+		OutputPath = GetOutputPath();
+		ExePath = CandB(CodePath);
+		if( (DonePaths = DivT.divInput(InputPath,OutputPath,ExePath)) != null ) return DonePaths;
+		if( (DonePaths = DivSentry.divInput(InputPath,OutputPath,ExePath)) != null ) return DonePaths;
+		DonePaths = DivEOF.divInput(InputPath,OutputPath,ExePath);
+		return DonePaths;
 	}
+	
 }
+
