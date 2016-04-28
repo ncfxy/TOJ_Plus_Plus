@@ -1,5 +1,11 @@
+package sfm.diveof.shifengming;
+
 import java.lang.Process;
+import java.util.List;
 import java.util.Scanner;
+
+import cn.tjuscs.oj.cmdHelper.ExecuteWindowsCommand;
+
 import java.io.*;
 
 public class DivEOF{
@@ -26,7 +32,6 @@ public class DivEOF{
 		}
 		String arg = new String("");
 		
-		ExecuteWindowsCommand cmd = new ExecuteWindowsCommand();
 		arg = ipt[0];
 		curInLen = 1;
 		for(int i=1;i<=IFLen;i++){
@@ -42,11 +47,11 @@ public class DivEOF{
 			fout = new BufferedWriter(new FileWriter("tempFile.out"));
 			fout.close();
 			
-			cmd.execute(ExName+" < tempFile.in > tempFile.out" + "\n");
+			ExecuteWindowsCommand.execute(ExName+" < tempFile.in > tempFile.out" + "\n");
 			Thread.sleep(1000);
 			Character terminate;
 			terminate = 3;
-			cmd.execute(terminate.toString());
+			ExecuteWindowsCommand.execute(terminate.toString());
 			BufferedReader getOut = new BufferedReader(new FileReader("tempFile.out"));
 			while( (tmp[curOutLen]=getOut.readLine()) != null ){
 				System.out.println(tmp[curOutLen]);
@@ -55,7 +60,7 @@ public class DivEOF{
 			System.out.println(curOutLen);
 			if(curOutLen > prvOutLen && isprefix()){
 				fout = new BufferedWriter(new FileWriter(Split+FileIndex+".out"));
-				DonePaths.add(String(Split+FileIndex+".out"));
+				DonePaths.add(new String(Split+FileIndex+".out"));
 				for(;prvInLen < curInLen;prvInLen++){
 					fout.write(ipt[prvInLen]);
 					fout.write("\n");

@@ -1,37 +1,39 @@
 package sfm.diveof.shifengming;
 
-import java.lang.Process;
-import java.util.Scanner;
-import java.io.*;
->>>>>>> refs/remotes/ncfxy/master:src/main/java/sfm/diveof/shifengming/divFile.java
+import java.io.IOException;
+import java.util.List;
 
-public class DivFile {
-	String CodePath,ExePath,InputPath,OutPutPath;
+public class divFile {
+	String CodePath, ExePath, InputPath, OutputPath;
 	List<String> DonePaths;
 
-	public static String GetCodePath(){
-		return String("");
+	public String GetCodePath() {
+		return new String("");
 	}
-	public static String GetInputPath(){
-		return String("");
+
+	public String GetInputPath() {
+		return new String("");
 	}
-	public static String GetOutputPath(){
-		return String("");
+
+	public String GetOutputPath() {
+		return new String("");
 	}
-	public static String CandB(String CodePath){
-		return String("")
+
+	public String CandB(String CodePath){
+		return new String("");
 	}
-	
-	public static List<String> divfile(){
+
+	public List<String> divfile() throws IOException, InterruptedException {
 		CodePath = GetCodePath();
 		InputPath = GetInputPath();
 		OutputPath = GetOutputPath();
 		ExePath = CandB(CodePath);
-		if( (DonePaths = DivT.divInput(InputPath,OutputPath,ExePath)) != null ) return DonePaths;
-		if( (DonePaths = DivSentry.divInput(InputPath,OutputPath,ExePath)) != null ) return DonePaths;
-		DonePaths = DivEOF.divInput(InputPath,OutputPath,ExePath);
+		if ((DonePaths = DivT.divInput(InputPath, OutputPath, ExePath)) != null)
+			return DonePaths;
+		if ((DonePaths = DivSentry.divInput(InputPath, OutputPath, ExePath)) != null)
+			return DonePaths;
+		DonePaths = DivEOF.divInput(InputPath, OutputPath, ExePath);
 		return DonePaths;
 	}
-	
-}
 
+}
