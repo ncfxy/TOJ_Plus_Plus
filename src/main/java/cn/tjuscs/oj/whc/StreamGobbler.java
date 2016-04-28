@@ -1,4 +1,4 @@
-package cn.tjuscs.oj.cmdHelper;
+package cn.tjuscs.oj.whc;
 
 import java.io.BufferedReader;
 import java.io.IOException;

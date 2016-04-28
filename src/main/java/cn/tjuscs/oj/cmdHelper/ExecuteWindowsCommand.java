@@ -31,7 +31,8 @@ public class ExecuteWindowsCommand {
 		Process p = null;
 		StringBuilder results = new StringBuilder();
 		try {
-			String newCommand = "cmd + /c " + command;
+			String newCommand = "cmd /c " + command;
+			System.out.println(newCommand);
 			p = rn.exec(newCommand);
 			new StreamGobbler(p.getInputStream(), "STDOUT", results).start();
 			new StreamGobbler(p.getErrorStream(), "ERROR", results).start();

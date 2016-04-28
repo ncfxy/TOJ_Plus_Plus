@@ -1,4 +1,4 @@
-package cn.tjuscs.oj.cmdHelper;
+package cn.tjuscs.oj.whc;
 
 import java.io.IOException;
 import java.util.logging.Level;
