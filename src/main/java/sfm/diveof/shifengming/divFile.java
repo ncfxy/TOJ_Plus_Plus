@@ -10,16 +10,16 @@ public class DivFile {
 	List<String> DonePaths;
 
 	public static String GetCodePath(){
-		return String("");
+		return new String("");
 	}
 	public static String GetInputPath(){
-		return String("");
+		return new String("");
 	}
 	public static String GetOutputPath(){
-		return String("");
+		return new String("");
 	}
 	public static String CandB(String CodePath){
-		return String("")
+		return new String("");
 	}
 	
 	public static List<String> divfile(){
