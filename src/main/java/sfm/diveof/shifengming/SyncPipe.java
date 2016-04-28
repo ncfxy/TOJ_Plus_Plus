@@ -1,5 +1,6 @@
 package sfm.diveof.shifengming;
 
+import java.io.InputStream;
 import java.io.OutputStream;
 
 public class SyncPipe implements Runnable {
@@ -9,6 +10,7 @@ public class SyncPipe implements Runnable {
     public SyncPipe(InputStream istrm, OutputStream ostrm) {  
         this.inStream = istrm;  
         this.outStream = ostrm;  
+    }
     
     public void run() {  
         try{  
