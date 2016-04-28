@@ -1,3 +1,11 @@
+<<<<<<< HEAD:sfm.diveof/src/divFile.java
+=======
+package sfm.diveof.shifengming;
+
+import java.lang.Process;
+import java.util.Scanner;
+import java.io.*;
+>>>>>>> refs/remotes/ncfxy/master:src/main/java/sfm/diveof/shifengming/divFile.java
 
 public class DivFile {
 	String CodePath,ExePath,InputPath,OutPutPath;

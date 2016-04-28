@@ -42,7 +42,7 @@ public class DivEOF{
 			fout = new BufferedWriter(new FileWriter("tempFile.out"));
 			fout.close();
 			
-			cmd.execute("apb.exe < tempFile.in > tempFile.out" + "\n");
+			cmd.execute(ExName+" < tempFile.in > tempFile.out" + "\n");
 			Thread.sleep(1000);
 			Character terminate;
 			terminate = 3;
@@ -55,6 +55,7 @@ public class DivEOF{
 			System.out.println(curOutLen);
 			if(curOutLen > prvOutLen && isprefix()){
 				fout = new BufferedWriter(new FileWriter(Split+FileIndex+".out"));
+				DonePaths.add(String(Split+FileIndex+".out"));
 				for(;prvInLen < curInLen;prvInLen++){
 					fout.write(ipt[prvInLen]);
 					fout.write("\n");
@@ -68,6 +69,7 @@ public class DivEOF{
 		}
 		IFin.close();
 		OFin.close();
+		return DonePaths;
 	}
 	
 	public static boolean isprefix(){
