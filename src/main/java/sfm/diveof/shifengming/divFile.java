@@ -1,5 +1,3 @@
-<<<<<<< HEAD:sfm.diveof/src/divFile.java
-=======
 package sfm.diveof.shifengming;
 
 import java.lang.Process;
