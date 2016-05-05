@@ -1,0 +1,10 @@
+此处以C程序为例，C++程序同理
+1、使用命令在程序中加入附加信息
+	gcc demo.c -o demo.exe -ftest-coverage -fprofile-arcs
+2、执行程序
+	demo.exe < test1.txt > output.txt
+3、生成gcov覆盖信息文件demo.c.gcov
+	gcov demo.c
+4、根据gcov覆盖文件得到程序的覆盖矩阵（每个测试用例为一行）
+	matrix
+5、执行多个测试用例，生成测试用例的执行结果矩阵
