@@ -1,4 +1,4 @@
-package cn.tjuscs.oj.cmdHelper;
+package cn.tjuscs.oj.whc;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -31,8 +31,7 @@ public class ExecuteWindowsCommand {
 		Process p = null;
 		StringBuilder results = new StringBuilder();
 		try {
-			String newCommand = "cmd /c " + command;
-			System.out.println(newCommand);
+			String newCommand = "cmd + /c " + command;
 			p = rn.exec(newCommand);
 			new StreamGobbler(p.getInputStream(), "STDOUT", results).start();
 			new StreamGobbler(p.getErrorStream(), "ERROR", results).start();

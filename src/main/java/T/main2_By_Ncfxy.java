@@ -18,7 +18,7 @@ import com.sun.xml.internal.bind.v2.runtime.RuntimeUtil.ToStringAdapter;
 
 import cn.tjuscs.oj.cmdHelper.ExecuteWindowsCommand;
 
-public class main2 {
+public class main2_By_Ncfxy {
 
 	// if begains with " case "#": "
 	// GG
