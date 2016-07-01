@@ -17,7 +17,7 @@ import cn.tjuscs.oj.cmdHelper.ExecuteWindowsCommand;
 public class Tcase{
 	
 	//if begains with " case "#": "
-	//GG
+	//GGGGGGGG
 	public static final int MAX_LINE = 100000;
 	public static String[] ipt = new String[MAX_LINE];
 	public static String[] opt = new String[MAX_LINE];
