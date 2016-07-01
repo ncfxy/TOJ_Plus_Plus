@@ -1,0 +1,28 @@
+/* 1951 Goldbach's Conjecture */
+/* C++ 00:00.33 4284K */
+
+#include <stdio.h>
+#include <math.h>
+
+#define MAX 1000000
+
+int prime[MAX];
+
+int main()
+{
+	int n,i;
+	for (i=2;i<MAX;i++) 
+		if (!prime[i]) {
+			int tmp=i;
+			while ((tmp+=i)<MAX) 
+				prime[tmp]=1;
+		}
+	while (scanf("%d",&n),n!=0) {
+		for (i=3;i<=n/2;i++) 
+			if ((!prime[i])&&(!prime[n-i])) {
+				printf("%d = %d + %d\n",n,i,n-i);
+				break;
+			}
+	}
+	return 0;
+}

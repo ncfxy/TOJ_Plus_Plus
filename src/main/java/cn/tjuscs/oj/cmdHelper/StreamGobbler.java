@@ -6,7 +6,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+
 import java.nio.charset.Charset;
+import java.security.PublicKey;
 import java.util.logging.Level;
 
 /**
@@ -18,11 +20,11 @@ public class StreamGobbler extends Thread {
 	OutputStream _outputStream;
 	StringBuilder _results;
 
-	StreamGobbler(InputStream is, String type, StringBuilder results) {
+	public StreamGobbler(InputStream is, String type, StringBuilder results) {
 		this(is, type, results, null);
 	}
 
-	StreamGobbler(InputStream is, String type, StringBuilder results,
+	public StreamGobbler(InputStream is, String type, StringBuilder results,
 			OutputStream redirect) {
 		this._inputStream = is;
 		this._type = type;
