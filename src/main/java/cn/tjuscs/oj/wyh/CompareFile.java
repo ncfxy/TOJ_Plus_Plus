@@ -12,7 +12,8 @@ public class CompareFile {
 	protected String f2;
 	protected File file1;
 	protected File file2;
-    protected String url = "F:\\Material\\2016dachaung\\acmdata\\src\\";
+//    protected String url = "F:\\Material\\2016dachaung\\acmdata\\src\\";
+	protected String url = "C:\\Users\\Administrator\\Desktop\\acmdata\\src\\";
 
     //增加，减少或者改动
     boolean isc = false;
@@ -41,7 +42,7 @@ public class CompareFile {
 	}
 	
 	private String compare(){
-		return ExecuteWindowsCommand.execute("diff" + " " + url + "a" + ".src" + " " + url + "b" +  ".src");
+		return ExecuteWindowsCommand.execute("D:\\Github\\TOJ_Plus_Plus\\src\\main\\java\\cn\\tjuscs\\oj\\wyh\\diff.exe" + " " + f1 + ".src" + " " + f2 +  ".src");
 	}
 	
 	public void judge(){
