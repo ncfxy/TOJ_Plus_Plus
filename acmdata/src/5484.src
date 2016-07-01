@@ -1,0 +1,65 @@
+#include<stdio.h>
+
+int len[50];
+bool a[50][50];
+
+main()
+{
+	int x,y,i,i1,l;
+	char temp;
+	scanf("%d%d",&x,&y);
+	getchar();
+	for(i=0;i<x;i++)
+	{
+		for(i1=0;i1<y;i1++)
+		{
+			scanf("%c",&temp);
+			if(temp=='1')
+			{
+				a[i][i1]=true;
+			}
+			else
+			{
+				a[i][i1]=false;
+			}
+		}
+		getchar();
+	}
+	for(i=0;i<y;i++)
+	{
+		i1=0;
+		while(1)
+		{
+			l=0;
+			while(a[i1][i])
+			{
+				i1++;
+				if(i1>=x)
+				{
+					goto e;
+				}
+			}
+			while(!a[i1][i])
+			{
+				l++;
+				i1++;
+				if(i1>=x)
+				{
+					break;
+				}
+			}
+e:			len[l]++;
+			if(i1>=x)
+			{
+				break;
+			}
+		}
+	}
+	for(i=1;i<1000;i++)
+	{
+		if(len[i]!=0)
+		{
+			printf("%d %d\n",i,len[i]);
+		}
+	}
+}

@@ -43,7 +43,7 @@ public class StreamGobbler extends Thread {
 				printWriter = new PrintWriter(_outputStream);
 			}
 
-			inputStreamReader = new InputStreamReader(_inputStream, Charset.forName("GBK"));
+			inputStreamReader = new InputStreamReader(_inputStream);
 			bufferReader = new BufferedReader(inputStreamReader);
 			readFromInputStream(bufferReader, printWriter);
 		} catch (IOException e) {

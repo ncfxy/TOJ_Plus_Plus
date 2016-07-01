@@ -1,0 +1,54 @@
+#include<stdio.h>
+main()
+{
+	int k,i,i1,total,step,now,temp,x,s1,s2,a[14];
+	bool flag;
+	for(k=1;k<13;k++)
+	{
+		s1=1-k;
+		s2=0;
+		for(x=1;x<1000000;x++)
+		{
+			s1+=k<<1;
+			s2+=k<<1;
+			for(i=s1;i<=s2;i++)
+			{
+				flag=true;
+				now=0;
+				total=k<<1;
+				step=0;
+				for(i1=0;i1<k;i1++)
+				{
+					if(now+i>total)
+					{
+						temp=i+now-total;
+						total-=step;
+						temp=(temp-1)%total+1;
+						now=temp;
+						step=1;
+					}
+					else
+					{
+						step++;
+						now=now+i;
+					}
+					if(now<=k)
+					{
+						flag=false;
+						break;
+					}
+				}
+				if(flag)
+				{
+					a[k]=i;
+					goto e;
+				}
+			}
+		}
+e:		continue;
+	}
+	while(scanf("%d",&k)!=EOF&&k!=0)
+	{
+		printf("%d\n",a[k]);
+	}
+}
