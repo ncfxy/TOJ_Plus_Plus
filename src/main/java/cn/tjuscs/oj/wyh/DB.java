@@ -8,7 +8,7 @@ public class DB {
 	private String user;
 	private String pwd;
 	private String driver = "com.mysql.jdbc.Driver";
-	private String url = "jdbc:mysql://localhost:3306/";
+	private String url = "jdbc:mysql://www.ncfxy.com:3306/";
 	
 	private Connection conn = null;  
 	private PreparedStatement pst = null; 

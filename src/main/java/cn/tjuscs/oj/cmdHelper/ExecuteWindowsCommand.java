@@ -27,6 +27,7 @@ public class ExecuteWindowsCommand {
 	 * 			command runs.
 	 */
 	public static String execute(String command) {
+		LOGGER.setLevel(Level.WARNING);
 		Runtime rn = Runtime.getRuntime();
 		Process p = null;
 		StringBuilder results = new StringBuilder();
@@ -34,9 +35,12 @@ public class ExecuteWindowsCommand {
 			String newCommand = "cmd /c " + command;
 			System.out.println(newCommand);
 			p = rn.exec(newCommand);
-			new StreamGobbler(p.getInputStream(), "STDOUT", results).start();
-			new StreamGobbler(p.getErrorStream(), "ERROR", results).start();
-
+			StreamGobbler dealInputStream = new StreamGobbler(p.getInputStream(), "STDOUT", results);
+			StreamGobbler dealOutputStream = new StreamGobbler(p.getErrorStream(), "ERROR", results);
+			dealInputStream.start();
+			dealOutputStream.start();
+			dealInputStream.join();
+			dealOutputStream.join();
 			int exitValue = p.waitFor();
 			ExecuteWindowsCommand.getLogger()
 					.log(Level.INFO,
