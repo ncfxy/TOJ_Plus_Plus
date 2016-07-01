@@ -7,7 +7,7 @@ def getLineIndex(line):
 			result += '0'
 		else:
 			result += line[i]
-	return str(result)	
+	return str(result)
 
 def getString(num):
     if num < 10:
@@ -29,7 +29,7 @@ def getTestResult(sourceDir,x):
 
 
 def getMatrixFromGcov(version,programName, testNum):
-	sourceDir = "../source/predicate_matrix/v" + str(version)
+	sourceDir = "."
 	outputFileName = sourceDir + "/coverage_matrix.txt"
 	errorTestCasesFileName = "./errorTestCases"
 	outputFile = open(outputFileName, 'w')
@@ -40,7 +40,7 @@ def getMatrixFromGcov(version,programName, testNum):
 	outputStr += ('#LOES# ')
 	# 获取所有可执行行号
 	executableLineNum = 0
-	fileName = sourceDir + "/" + programName + str(1) + ".c.gcov"
+	fileName = sourceDir + "/" + programName + str(1) + ".cpp.gcov"
 	inputFile = open(fileName, 'r')
 	for line in inputFile:
 		if line[13] == ' ' and line[14] == '0':
@@ -49,21 +49,21 @@ def getMatrixFromGcov(version,programName, testNum):
 			if line[9] == ':' and line[15] == ':':
 				if line[8] != '-':
 					executableLineNum = executableLineNum + 1
-					outputStr += (getLineIndex(line) + ' ')	
+					outputStr += (getLineIndex(line) + ' ')
 	inputFile.close()
 	outputStr += ('\n')
 	outputStr += ('#NOES# ' + str(executableLineNum) + '\n')
 	outputStr += ('#NOF_# '+'\n')
 	outputStr += ('#LOFS# '+'\n')
 	for x in range(1,int(testNum)+1):
-		outputStr += ('#CASE#'+getString(x)+'#R'+ getTestResult(sourceDir,x)+'# ')
-		fileName = sourceDir + "/" + programName + str(x) + ".c.gcov"
+		#outputStr += ('#CASE#'+getString(x)+'#R'+ getTestResult(sourceDir,x)+'# ')
+		fileName = sourceDir + "/" + programName + str(x) + ".cpp.gcov"
 		if os.path.exists(fileName):
 			inputFile = open(fileName, 'r')
 		else:
 			# 如果不存在对应的gcov文件，则把对应信息保存到错误文件中
 			errorTestCasesFile.write(str(x) + ' ')
-			continue		
+			continue
 
 		lineIndex = 1
 		for line in inputFile:
@@ -87,7 +87,7 @@ def getMatrixFromGcov(version,programName, testNum):
 	errorTestCasesFile.write('\n')
 	errorTestCasesFile.flush()
 	errorTestCasesFile.close()
-	outputFile.close()	
+	outputFile.close()
 
 
 
@@ -103,4 +103,3 @@ testNum = sys.argv[3] # number of test case
 for index in range(1,int(lenn)+1):
     getMatrixFromGcov(index,programName, testNum)
     print(index)
- 
