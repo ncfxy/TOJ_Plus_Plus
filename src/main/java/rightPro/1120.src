@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <iostream.h>
+
+int main()
+{
+	int mile;
+	int avg=0;
+	char type;
+	char str[256];
+	while(1)
+	{
+		scanf("%s", str);
+		if (str[0] == '0' && str[1] == 0)
+		{
+			cout<<avg<<endl;
+			avg = 0;
+			scanf("%s", str);
+			if (str[0] == '#' && str[1] == 0) return 0;
+		}
+		scanf("%s%d %c", str, &mile, &type);
+
+		if (type == 'F')
+		{
+			avg = avg + mile * 2;
+		}
+		else if (type == 'B')
+		{
+			avg = avg + mile + (mile / 2) + (mile % 2);
+		}
+		else if (type == 'Y')
+		{
+			if (mile <= 500)
+			{
+				mile = 500;
+			}
+			avg = avg + mile;
+		}
+	}
+	return 0;
+}

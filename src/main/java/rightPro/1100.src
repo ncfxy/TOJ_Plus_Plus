@@ -1,0 +1,55 @@
+#include<iostream.h>
+#include<iomanip.h>
+#include<math.h>
+int isaaa(int i1,int i2)
+{
+	int temp;
+	if(i1>i2)
+	{
+		i1=i1+i2;
+		i2=i1-i2;
+		i1=i1-i2;
+	}
+	temp=i2;
+	while((temp%i1)!=0)
+	{
+		i2=temp;
+		temp=i1;
+		i1=i2%i1;
+	}
+	if(i1==1)
+		return 1;
+	return 0;
+}
+
+main()
+{
+	int n,N,i1,i2,*a,num;
+	double pi;
+	while(cin>>n&&n!=0)
+	{
+		num=0;
+		N=n*(n-1)/2;
+		a=new int[n];
+		for(i1=0;i1<n;i1++)
+		{
+			cin>>a[i1];
+		}
+		for(i1=0;i1<n;i1++)
+		{
+			for(i2=i1+1;i2<n;i2++)
+			{
+				if(isaaa(a[i1],a[i2]))
+				{
+					num++;
+				}
+			}
+		}
+		pi=sqrt(double(N*6)/double(num));
+		if(num==0)
+			cout<<"No estimate for this data set."<<endl;
+		else
+			cout<<setprecision(7)<<pi<<endl;
+		delete []a;
+	}
+}

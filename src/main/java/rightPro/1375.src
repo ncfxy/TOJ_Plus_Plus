@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main(void)
+{
+	int n, s;
+	int i;
+
+	while(scanf("%d", &n) == 1)
+	{
+		s = i = 0;
+		do {
+			s = (s * 10 + 1) % n;
+			i++;
+		} while(s);
+		printf("%d\n", i);
+	}
+	return 0;
+}

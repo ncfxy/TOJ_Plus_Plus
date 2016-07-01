@@ -1,8 +1,6 @@
 package sfm.diveof.shifengming;
 
-import java.lang.Process;
 import java.util.List;
-import java.util.Scanner;
 
 import cn.tjuscs.oj.cmdHelper.ExecuteWindowsCommand;
 
@@ -24,6 +22,7 @@ public class DivEOF{
 		FileReader ofst = new FileReader(OFName);
 		BufferedReader IFin = new BufferedReader(ifst);
 		BufferedReader OFin = new BufferedReader(ofst);
+		DonePaths = new ArrayList<String>();
 		while((ipt[IFLen]=IFin.readLine()) != null){
 			IFLen++;
 		}

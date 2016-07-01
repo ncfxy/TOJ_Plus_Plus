@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+const int dir[4][2] = {{0,1},{-1,1},{1,0},{1,1}};
+int table[20][20];
+
+int main()
+{
+	int cases,i,j,k,tmpi,tmpj,s;
+	scanf("%d",&cases);
+	while (cases--)
+	{
+		for (i = 1 ; i <= 19 ; i++)
+			for (j = 1 ; j <= 19 ; j++)
+				scanf("%d",&table[i][j]);
+		for (i = 1 ; i <= 19 ; i++)
+			for (j = 1 ; j <= 19 ; j++)
+			{
+				if (table[i][j] == 0) continue;
+				for (k = 0 ; k < 4 ; k++)
+				{
+					if (i - dir[k][0] >= 1 && j - dir[k][1] >= 1 &&
+						i - dir[k][0] <= 19 && j - dir[k][1] <= 19 && 
+						table[i][j] == table[i-dir[k][0]][j-dir[k][1]]) continue;
+					tmpi = i;
+					tmpj = j;
+					s = 0;
+					while (tmpi >= 1 && tmpi <= 19 && tmpj >= 1 && tmpj <= 19 && 
+						table[tmpi][tmpj] == table[i][j])
+					{
+						++s;
+						tmpi += dir[k][0];
+						tmpj += dir[k][1];
+					}
+					if (s == 5)
+					{
+						printf("%d\n",table[i][j]);
+						printf("%d %d\n",i,j);
+						goto out;
+					}
+				}
+			}
+		printf("0\n");
+out:	;
+	}
+	return 0;
+}

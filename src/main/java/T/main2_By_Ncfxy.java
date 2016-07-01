@@ -100,7 +100,6 @@ public class main2_By_Ncfxy {
 		}else{
 			return;
 		}
-
 		inputFileLines[0] = changeFirstNum(getFirst(inputFileLines[0]), inputFileLines[0], 1);
 		String arg = new String(inputFileLines[0]);
 		curInLen = 1;
