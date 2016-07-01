@@ -99,7 +99,7 @@ public class KindSentinel extends FileKind {
 	
 	@Override
 	boolean splitFile() throws IOException {
-		// TODO Auto-generated method stub\
+		// TODO Auto-generated method stub
 		String rightProExe = compileFile();
 		File tmp = new File(sourceFilePath.trim());
 		String fileName = tmp.getName();
@@ -136,17 +136,32 @@ public class KindSentinel extends FileKind {
 				sampleInputFile.writeBytes(sourceFileReader.readLine().trim());
 				sampleInputFile.writeBytes("\n");
 				String command = rightProExe + " < " + inFileName + " > " + outFileName;
-				System.out.println(command);
+				//System.out.println(command);
 				//Runtime rn = Runtime.getRuntime();
 				//rn.exec(command);
 				ExecuteWindowsCommand.execute(command);
 			}while(outFile.length()== prePtr 
 					&& sourceFileReader.getFilePointer()<sourceFileReader.length());
 			curPtr = sourceFileReader.getFilePointer();
-			String path = "D:\\application\\eclipse\\WorkSpace\\TOJ_Plus_Plus\\src\\main\\java\\splitedFiles\\"
+			
+			
+			//String pathin = outputFilePath + fileName + "_" + index + ".in";
+			
+			
+			String pathin = System.getProperty("user.dir") + "\\src\\main\\java\\splitedFiles\\" + fileName + "\\"
 						+ fileName + "_" + index + ".in";
-			File splitedFiles = new File(path);
+			String pathout = System.getProperty("user.dir") + "\\src\\main\\java\\splitedFiles\\" + fileName + "\\"
+					+ fileName + "_" + index + ".out";
+			File splitedFiles = new File(pathin);
+			File outSplitedFiles = new File(pathout);
+			
+			if(!splitedFiles.getParentFile().exists()){
+				splitedFiles.getParentFile().mkdir();
+			}
+			
 			creatFile(splitedFiles);
+			creatFile(outSplitedFiles);
+			
 			RandomAccessFile fileWriter = new RandomAccessFile(splitedFiles, "rw");
 			sourceFileReader.seek(prePtr);
 			while(sourceFileReader.getFilePointer() < curPtr){
@@ -154,11 +169,18 @@ public class KindSentinel extends FileKind {
 				fileWriter.writeBytes("\n");
 			}
 			fileWriter.writeBytes(res.toString());
+			fileWriter.close();
+			
+			String command = rightProExe + " < " + pathin + " > " + pathout;
+			System.out.println(command);
+			ExecuteWindowsCommand.execute(command);
+			
 			index ++;
 			prePtr = curPtr;
 			sampleInputFile.close();
-			fileWriter.close();
+			
 		}
+		
 		sourceFileReader.close();
 		return true;
 	}
