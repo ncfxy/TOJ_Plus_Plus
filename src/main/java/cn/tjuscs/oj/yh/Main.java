@@ -1,13 +1,10 @@
-package helloworld;
+package cn.tjuscs.oj.yh;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import cn.tjuscs.oj.cmdHelper.ExecuteWindowsCommand;
 import javax.swing.JOptionPane;
 
 public class Main {
-	//.../.../g++,Ö»Ö§³Ög++±àÒëÆ÷
+	//.../.../g++,Ö»Ö§ï¿½ï¿½g++ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private static String compilorPath = "";
 	
 //	public static void main(String[] args) {
@@ -20,7 +17,7 @@ public class Main {
 //		return;
 //	}
 	
-	//ÅÐ¶Ï²Ù×÷ÏµÍ³µÄÀàÐÍ£¬Ö»Ö§³Öwindows»òlinuxÏµÍ³
+	//ï¿½Ð¶Ï²ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½Ö»Ö§ï¿½ï¿½windowsï¿½ï¿½linuxÏµÍ³
 	private static boolean check(){
 		String os = System.getProperties().getProperty("os.name");
 		if(os.startsWith("win") || os.startsWith("Win")){
@@ -29,23 +26,18 @@ public class Main {
 		return false;
 	}
 	
-	//±àÒë·½·¨
-	public static String compile(String str, String mubiao){
+	//ï¿½ï¿½ï¿½ë·½ï¿½ï¿½
+	public static String compile(String str){
 		String from = str;
 		String to = "";
 		String compileCmd = "";
 		
-		if(mubiao == ""){
-			for (int i = 0; i < from.length(); i++){
-				if(from.charAt(i) == '.') break;
-				to += from.charAt(i);
-			}
-		}
-		else{
-			to = mubiao;
+		for (int i = 0; i < from.length(); i++){
+			if(from.charAt(i) == '.') break;
+			to += from.charAt(i);
 		}
 		
-		//windows²Ù×÷ÏµÍ³
+		//windowsï¿½ï¿½ï¿½ï¿½ÏµÍ³
 		if(check()){
 			if(compilorPath == ""){
 				compileCmd += "g++ " + from + " -o " + to;
@@ -55,16 +47,16 @@ public class Main {
 			}
 			String retCmd = ExecuteWindowsCommand.execute(compileCmd);
 			if(retCmd != ""){
-				String errorMsg = "±àÒëÎ´³É¹¦¡£¿ÉÄÜ³öÏÖµÄÎÊÌâ£º\n"
-						+ "1.¸ÃÏµÍ³Î´ÅäÖÃg++µÄÏµÍ³»·¾³±äÁ¿\n"
-						+ "2.ÔÚÄ¿Â¼ÏÂÎ´ÕÒµ½ÎÄ¼þ\n"
-						+ "3.compilorPathÎ´ÅäÖÃÕýÈ·\n"
-						+ "4.ÃüÁîÐ´´íÁË\n";
+				String errorMsg = "ï¿½ï¿½ï¿½ï¿½Î´ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü³ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½â£º\n"
+						+ "1.ï¿½ï¿½ÏµÍ³Î´ï¿½ï¿½ï¿½ï¿½g++ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n"
+						+ "2.ï¿½ï¿½Ä¿Â¼ï¿½ï¿½Î´ï¿½Òµï¿½ï¿½Ä¼ï¿½\n"
+						+ "3.compilorPathÎ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È·\n"
+						+ "4.ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½\n";
 				JOptionPane.showMessageDialog(null, errorMsg, "WARN", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		
-		//linux²Ù×÷ÏµÍ³
+		//linuxï¿½ï¿½ï¿½ï¿½ÏµÍ³
 		else{
 			if(compilorPath == ""){
 				compileCmd += "g++ -o " + to + " " + from;
@@ -75,11 +67,11 @@ public class Main {
 			
 			String retCmd = ExecuteLinuxCommand.execute(compileCmd);
 			if(retCmd != ""){
-				String errorMsg = "±àÒëÎ´³É¹¦¡£¿ÉÄÜ³öÏÖµÄÎÊÌâ£º\n"
-						+ "1.¸ÃÏµÍ³Î´ÅäÖÃg++µÄÏµÍ³»·¾³±äÁ¿\n"
-						+ "2.ÔÚÄ¿Â¼ÏÂÎ´ÕÒµ½ÎÄ¼þ\n"
-						+ "3.compilorPathÎ´ÅäÖÃÕýÈ·\n"
-						+ "4.ÃüÁîÐ´´íÁË\n";
+				String errorMsg = "ï¿½ï¿½ï¿½ï¿½Î´ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü³ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½â£º\n"
+						+ "1.ï¿½ï¿½ÏµÍ³Î´ï¿½ï¿½ï¿½ï¿½g++ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n"
+						+ "2.ï¿½ï¿½Ä¿Â¼ï¿½ï¿½Î´ï¿½Òµï¿½ï¿½Ä¼ï¿½\n"
+						+ "3.compilorPathÎ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È·\n"
+						+ "4.ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½\n";
 				JOptionPane.showMessageDialog(null, errorMsg, "WARN", JOptionPane.ERROR_MESSAGE);	
 			}
 		}

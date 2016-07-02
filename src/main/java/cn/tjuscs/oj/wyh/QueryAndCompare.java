@@ -6,7 +6,7 @@ import java.util.List;
 
 public class QueryAndCompare {
 	public static void main(String [] args){
-		DB db = new DB("root", "", "toj");
+		DB db = new DB("sonar", "sonar", "acmdata");
 		db.setTable("judge");
 		db.getByUid("temp0");
 		//db.setLimit(2);

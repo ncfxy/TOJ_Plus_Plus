@@ -1,4 +1,9 @@
+package cn.tjuscs.oj.rungcov;
+
 import java.util.*;
+
+import cn.tjuscs.oj.cmdHelper.ExecuteWindowsCommand;
+
 import java.io.*;
 
 public class rungcov {

@@ -7,18 +7,7 @@ public class divFile {
 	String CodePath, ExePath, InputPath, OutputPath;
 	List<String> DonePaths;
 
-<<<<<<< HEAD
-	public static String GetCodePath(){
-		return new String("");
-	}
-	public static String GetInputPath(){
-		return new String("");
-	}
-	public static String GetOutputPath(){
-		return new String("");
-	}
-	public static String CandB(String CodePath){
-=======
+
 	public String GetCodePath() {
 		return new String("");
 	}
@@ -32,7 +21,6 @@ public class divFile {
 	}
 
 	public String CandB(String CodePath){
->>>>>>> refs/remotes/ncfxy/master
 		return new String("");
 	}
 
