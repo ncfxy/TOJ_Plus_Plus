@@ -30,14 +30,19 @@ public class Main {
 	}
 	
 	//编译方法
-	public static String compile(String str){
+	public static String compile(String str, String mubiao){
 		String from = str;
 		String to = "";
 		String compileCmd = "";
 		
-		for (int i = 0; i < from.length(); i++){
-			if(from.charAt(i) == '.') break;
-			to += from.charAt(i);
+		if(mubiao == ""){
+			for (int i = 0; i < from.length(); i++){
+				if(from.charAt(i) == '.') break;
+				to += from.charAt(i);
+			}
+		}
+		else{
+			to = mubiao;
 		}
 		
 		//windows操作系统

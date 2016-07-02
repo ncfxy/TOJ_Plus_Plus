@@ -1,10 +1,14 @@
 package sfm.diveof.shifengming;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.tjuscs.oj.cmdHelper.ExecuteWindowsCommand;
-
-import java.io.*;
 
 public class DivEOF{
 	public static final int MAX_LINE = 100000;
@@ -22,6 +26,7 @@ public class DivEOF{
 		FileReader ofst = new FileReader(OFName);
 		BufferedReader IFin = new BufferedReader(ifst);
 		BufferedReader OFin = new BufferedReader(ofst);
+		DonePaths = new ArrayList<String>();
 		while((ipt[IFLen]=IFin.readLine()) != null){
 			IFLen++;
 		}
