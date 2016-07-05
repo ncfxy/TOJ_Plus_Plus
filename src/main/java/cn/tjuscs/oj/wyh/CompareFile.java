@@ -12,8 +12,7 @@ public class CompareFile {
 	protected String f2;
 	protected File file1;
 	protected File file2;
-//    protected String url = "F:\\Material\\2016dachaung\\acmdata\\src\\";
-	protected String url = "C:\\Users\\Administrator\\Desktop\\acmdata\\src\\";
+	protected String url = System.getProperty("user.dir");
 
     //增加，减少或者改动
     boolean isc = false;
@@ -35,14 +34,14 @@ public class CompareFile {
     String [] reStrings;
     
 	protected CompareFile(String f1, String f2){
-		this.f1 = url + f1;
-		this.f2 = url + f2;
+		this.f1 = url + "\\acmdata\\src\\" + f1;
+		this.f2 = url + "\\acmdata\\src\\" + f2;
 		file1 = new File(f1);
 		file2 = new File(f2);
 	}
 	
 	private String compare(){
-		return ExecuteWindowsCommand.execute("D:\\Github\\TOJ_Plus_Plus\\src\\main\\java\\cn\\tjuscs\\oj\\wyh\\diff.exe" + " " + f1 + ".src" + " " + f2 +  ".src");
+		return ExecuteWindowsCommand.execute( url + "\\src\\main\\java\\cn\\tjuscs\\oj\\wyh\\diff.exe" + " " + f1 + ".src" + " " + f2 + ".src");
 	}
 	
 	public void judge(){
@@ -146,7 +145,7 @@ public class CompareFile {
 			}
 		}
 		if(n == reStrings[c].length()){
-			System.out.println("第一个文件的第" + reStrings[c].substring(cSecond, reStrings[c].length()) + "行" );
+			System.out.println("第二个文件的第" + reStrings[c].substring(cSecond, reStrings[c].length()) + "行" );
 		}
 		for(n = i + 1; n < reStrings.length && reStrings[n].charAt(0) == '>'; n++){
 			System.out.println(reStrings[n]);
