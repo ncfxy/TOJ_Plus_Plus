@@ -17,11 +17,11 @@ public class StreamGobbler extends Thread {
 	OutputStream _outputStream;
 	StringBuilder _results;
 
-	StreamGobbler(InputStream is, String type, StringBuilder results) {
+	public StreamGobbler(InputStream is, String type, StringBuilder results) {
 		this(is, type, results, null);
 	}
 
-	StreamGobbler(InputStream is, String type, StringBuilder results,
+	public StreamGobbler(InputStream is, String type, StringBuilder results,
 			OutputStream redirect) {
 		this._inputStream = is;
 		this._type = type;
