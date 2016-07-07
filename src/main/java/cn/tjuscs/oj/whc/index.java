@@ -1,16 +1,25 @@
 package cn.tjuscs.oj.whc;
 
+import java.io.File;
 import java.io.IOException;
 
 public class index {
 
 	public static void main(String[] args) throws IOException{
 		
+		
+		String temp = "\\data";
+		File test = new File(temp);
+		System.out.println(test.getCanonicalPath());
 		// TODO Auto-generated method stub
-		String infile = "D:\\application\\eclipse\\WorkSpace\\TOJ_Plus_Plus\\src\\main\\java\\data\\1007.in";
-		String outfile = "D:\\application\\eclipse\\WorkSpace\\TOJ_Plus_Plus\\src\\main\\java\\data\\1007.out";
-		String target = "D:\\application\\eclipse\\WorkSpace\\TOJ_Plus_Plus\\src\\main\\java\\splitedFiles";
-		String rightPro = "D:\\application\\eclipse\\WorkSpace\\TOJ_Plus_Plus\\src\\main\\java\\rightPro";
+		
+		
+		//所有的文件目录都是一致的。
+		String infile = "\\data\\toj_problem_1007\\1007.in";
+		String outfile = "\\data\\toj_problem_1007\\1007.out";
+		String target = "\\data\\toj_problem_1007\\splitedTestCases";
+		//文件名中利用sid唯一确定program的地址。
+		String rightPro = "\\data\\toj_problem_1007\\programs\\commit_id_1131123\\1131123.exe";
 		
 		KindSentinel kindSentinel = new KindSentinel(infile, outfile, target, rightPro);
 		int kind;
