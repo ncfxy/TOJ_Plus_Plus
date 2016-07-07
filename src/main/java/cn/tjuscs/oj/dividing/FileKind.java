@@ -1,18 +1,21 @@
-package cn.tjuscs.oj.whc;
+package cn.tjuscs.oj.dividing;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
+import cn.tjuscs.oj.yh.compile;
+
 /*
  * FileKind作为基类。
  */
 
-public abstract class FileKind {
+public abstract class FileKind extends compile {
 	protected String sourceFilePath; //需要拆分的用例的源文件地址
 	protected String outputFilePath; //正确的输出文件（.out文件）
 	protected String targetFilePath; //拆分后的样例的存放地址
 	protected String rightProPath;   //正确运行的程序地址
+	protected String pid;
 	protected StringBuffer res;
 	
 	
@@ -32,6 +35,10 @@ public abstract class FileKind {
 		this.res.append("");
 	}
 	
+	//default constructor
+	public FileKind(){
+		
+	}
 
 	
 	/**
@@ -86,8 +93,4 @@ public abstract class FileKind {
 	
 	abstract boolean splitFile() throws IOException, InterruptedException;
 	
-	String compileFile(){
-		
-		return "D:\\application\\eclipse\\WorkSpace\\TOJ_Plus_Plus\\src\\main\\java\\exe\\toj1007.exe";
-	}
 }
