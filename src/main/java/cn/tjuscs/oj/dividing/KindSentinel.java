@@ -134,8 +134,8 @@ public class KindSentinel extends FileKind {
 		if(this.res.toString() == "")
 			return false;
 		
-		String outFileName = "sample1.out";
-		String inFileName = "sample1.in";
+		String outFileName = this.targetFilePath + "\\sample1.out";
+		String inFileName = this.targetFilePath + "\\sample1.in";
 		File outFile = new File(outFileName);
 		//File rightOutputFile = new File(outputFilePath);
 		creatFile(outFile);
