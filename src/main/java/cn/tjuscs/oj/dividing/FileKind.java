@@ -15,6 +15,7 @@ public abstract class FileKind extends compile {
 	protected String outputFilePath; // 正确的输出文件（.out文件）
 	protected String targetFilePath; // 拆分后的样例的存放地址
 	protected String rightProPath; // 正确运行的程序地址
+	protected String rightExePath;
 	protected String pid;
 	protected StringBuffer res;
 

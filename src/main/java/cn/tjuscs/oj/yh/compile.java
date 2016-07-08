@@ -1,6 +1,10 @@
 package cn.tjuscs.oj.yh;
 
 import cn.tjuscs.oj.cmdHelper.ExecuteWindowsCommand;
+
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.JOptionPane;
 
 //|------------------------------------------------------------------------------|
@@ -11,7 +15,7 @@ import javax.swing.JOptionPane;
 //| make the class is more strong. it is convenient for user to use the class.   |
 //|------------------------------------------------------------------------------|
 
-public class Main {
+public class compile {
 	
 	//.../.../g++, the path of g++
 	private static String gpp_path = "";
@@ -136,7 +140,7 @@ public class Main {
 	}
 	
 	//main compile function
-	public static String compile(String file_path, String desti_path){
+	public static String compile(String file_path, String desti_path) {
 		//check message
 		System.out.println("Please ensure you have set the gpp_path"
 				+ " or your computer can directly use g++ command in the CMD.exe");
@@ -232,7 +236,16 @@ public class Main {
 			filename = file_path.substring(src_filename + 1, src_dot);
 			String src_tmp = file_path.substring(0, src_dot);
 			String src_newfile = src_tmp + "_src.c";
+			System.out.println(src_newfile);
 			String from = src_newfile;
+			File temp = new File(src_newfile);
+			try {
+				System.out.println("1");
+				temp.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			String to = desti_path;
 			if(to == ""){
 				to = src_tmp;
@@ -313,31 +326,31 @@ public class Main {
 		return compile(file_path, desti_path);
 	}
 
-	//main function, just for test this class
-	public static void main(String[] args) {
-		
-//		set_gpp_path("D:\\software\\Dev-Cpp\\MinGW32");
-//		set_gpp_path("D:\\software\\CodeBlocks\\MinGW");
-//		set_gpp_path("E:\\MyCode\\TOJ_Plus_Plus\\src\\main\\java\\cn\\tjuscs\\oj\\yh\\MinGW\\bin");
-		System.out.println(gpp_path);
-		compile("C:\\Users\\yunhao\\Desktop\\5484.src", "e:\\a\\b\\c");
-		
-//		String s = "e:\\tojtest\\a.src";
-//		int res = check_file_kind(s);
-//		System.out.println(res);
-		
-//		String s = "e:\\tojtest\\a.c";
-//		String res = build_path(s);
-//		System.out.println(res);
-		
-//		System.out.println("=os.name:"+System.getProperties().getProperty("os.name"));  
-//		System.out.println("=file.separator:"+System.getProperties().getProperty("file.separator"));
-		
-//		String s = "yunhao/haha/huhu/test.cpp";
-//		System.out.println('\n');
-//		String ret = compile("C:\\Users\\yunhao\\Desktop\\test1.cpp");
-		
-		return;
-	}
+//	//main function, just for test this class
+//	public static void main(String[] args) {
+//		
+////		set_gpp_path("D:\\software\\Dev-Cpp\\MinGW32");
+////		set_gpp_path("D:\\software\\CodeBlocks\\MinGW");
+////		set_gpp_path("E:\\MyCode\\TOJ_Plus_Plus\\src\\main\\java\\cn\\tjuscs\\oj\\yh\\MinGW\\bin");
+//		System.out.println(gpp_path);
+//		compile("C:\\Users\\yunhao\\Desktop\\5484.src", "e:\\a\\b\\c");
+//		
+////		String s = "e:\\tojtest\\a.src";
+////		int res = check_file_kind(s);
+////		System.out.println(res);
+//		
+////		String s = "e:\\tojtest\\a.c";
+////		String res = build_path(s);
+////		System.out.println(res);
+//		
+////		System.out.println("=os.name:"+System.getProperties().getProperty("os.name"));  
+////		System.out.println("=file.separator:"+System.getProperties().getProperty("file.separator"));
+//		
+////		String s = "yunhao/haha/huhu/test.cpp";
+////		System.out.println('\n');
+////		String ret = compile("C:\\Users\\yunhao\\Desktop\\test1.cpp");
+//		
+//		return;
+//	}
 	
 }
