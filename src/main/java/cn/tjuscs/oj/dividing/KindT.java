@@ -22,16 +22,17 @@ public class KindT extends FileKind {
 		// TODO Auto-generated constructor stub
 	}
 
-	public KindT(String pid, String sid) {
+	public KindT(String pid, String sid) throws IOException {
 		// TODO Auto-generated constructor stub
 		
 		//所有的文件目录都是一致的
 		//文件名中利用sid唯一确定program的地址。
-		this.sourceFilePath = "./\\data\\toj_problem_" + pid + "\\" + pid + ".in";
-		this.outputFilePath = "./\\data\\toj_problem_" + pid + "\\" + pid + ".out";
-		this.targetFilePath = "./\\data\\toj_problem_" + pid + "\\splitedTestCases";
-	//这里暂时只针对于cpp文件，后期要更改的
-		this.rightProPath = "./\\data\\toj_problem_" + pid + "\\programs\\commit_id_" + sid + "\\" + sid + ".cpp";
+		this.sourceFilePath = new File("./\\data\\toj_problem_" + pid + "\\" + pid + ".in").getCanonicalPath();
+		this.outputFilePath = new File("./\\data\\toj_problem_" + pid + "\\" + pid + ".out").getCanonicalPath();
+		this.targetFilePath = new File("./\\data\\toj_problem_" + pid + "\\splitedTestCases").getCanonicalPath();
+		this.rightProPath = new File("./\\data\\toj_problem_" + pid + "\\programs\\commit_id_" + sid + "\\" + sid + ".src").getCanonicalPath();
+		this.rightExePath = compile(this.rightProPath);
+		ExecuteWindowsCommand.execute(this.rightExePath + " < " + this.sourceFilePath + " > " + this.outputFilePath);
 		this.pid = pid;
 		this.res = new StringBuffer();
 		this.res.append("");
@@ -42,7 +43,6 @@ public class KindT extends FileKind {
 		// TODO Auto-generated method stub
 
 		inputFileRowLength = outputFileRowLength = curInLen = curOutLen = prvInLen = prvOutLen = FileIndex = 0;
-		String exeFilename = new File(compile(this.rightProPath)).getAbsolutePath();
 
 		//读取.in文件的第一行并储存在inputFileLines数组中
 		BufferedReader inputBufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(sourceFilePath)));
@@ -82,7 +82,7 @@ public class KindT extends FileKind {
 		// use the new input file to check answer
 		// if not right return
 		// get in to a file
-		ExecuteWindowsCommand.execute(exeFilename + " < " + changeFirstNumInput + " > " + changeFirstNumOutput);
+		ExecuteWindowsCommand.execute(this.rightExePath + " < " + changeFirstNumInput + " > " + changeFirstNumOutput);
 		BufferedReader newOBR = new BufferedReader(new FileReader(changeFirstNumOutput));
 		BufferedReader oldOBR = new BufferedReader(new FileReader(outputFilePath));
 		String news = null, olds = null;
@@ -108,7 +108,6 @@ public class KindT extends FileKind {
 	public boolean splitFile() throws IOException, InterruptedException{
 		// TODO Auto-generated method stub
 //		long a = System.currentTimeMillis();
-		String exeFilename = new File(compile(this.rightProPath)).getAbsolutePath();
 		inputFileLines[0] = changeFirstNum(getFirst(inputFileLines[0]), inputFileLines[0], 1);
 		String arg = new String(inputFileLines[0]);
 		curInLen = 1;
@@ -128,7 +127,7 @@ public class KindT extends FileKind {
 
 			fout.close();
 
-			ExecuteWindowsCommand.execute(exeFilename + " < " + tmpInFileName + " > " + tmpOutFileName);
+			ExecuteWindowsCommand.execute(this.rightExePath + " < " + tmpInFileName + " > " + tmpOutFileName);
 			// Thread.sleep(1000);
 			// Character terminate;
 			// terminate = 3;

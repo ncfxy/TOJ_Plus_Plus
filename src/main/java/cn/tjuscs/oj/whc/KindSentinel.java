@@ -31,7 +31,7 @@ public class KindSentinel extends FileKind {
 		RandomAccessFile inputFileReader = null;
 		RandomAccessFile sampleInputFileWriter = null;
 		
-		inputFileReader = new RandomAccessFile(sourceFilePath, "rw");
+		inputFileReader = new RandomAccessFile(this.sourceFilePath, "rw");
 		
 		
 		boolean flag = false;
