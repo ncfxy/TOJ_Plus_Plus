@@ -1,0 +1,38 @@
+        -:    0:Source:992065.cpp
+        -:    0:Graph:992065.gcno
+        -:    0:Data:992065.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:
+        9:    3:int proc(int n)
+        -:    4:{
+        -:    5:	int i;
+        9:    6:	int s = 0;
+        9:    7:	int dn = 5;
+        -:    8:	int c;
+        -:    9:	
+       14:   10:	do
+        -:   11:	{
+       14:   12:		c = n / dn;
+       14:   13:		s += c;
+       14:   14:		dn *= 5;
+        -:   15:	} while (c > 0);
+        -:   16:
+        9:   17:	return s;
+        -:   18:}
+        -:   19:
+        1:   20:int main()
+        -:   21:{
+        -:   22:	int n;
+        -:   23:	int i;
+        -:   24:	int c;
+        -:   25:
+        1:   26:	scanf("%d", &n);
+       10:   27:	for (i = 0; i < n; i++)
+        -:   28:	{
+        9:   29:		scanf("%d", &c);
+        9:   30:		printf("%d\n", proc(c));
+        -:   31:	}
+        1:   32:	return 0;
+        -:   33:}
