@@ -21,7 +21,7 @@ public class rungcov {
 			ExecuteWindowsCommand.execute(srcFileName+".exe < "+inputFileName+i+".txt > "+outputFileName+i+".txt");
 			ExecuteWindowsCommand.execute("gcov "+srcFileName+".cpp");
 			ExecuteWindowsCommand.execute("ren "+srcFileName+".cpp.gcov "+srcFileName+i+".cpp.gcov");
-		}
+		}   
 		CMD.execute("python newgetMatrixFromGcov.py "+srcFileName+" 1 "+casenum);
 	}
 }
