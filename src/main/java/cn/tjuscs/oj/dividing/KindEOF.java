@@ -2,6 +2,7 @@ package cn.tjuscs.oj.dividing;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -24,15 +25,15 @@ public class KindEOF extends FileKind{
 		// TODO Auto-generated constructor stub
 	}
 
-	public KindEOF(String pid, String sid) {
+	public KindEOF(String pid, String sid) throws IOException {
 		// TODO Auto-generated constructor stub
 		
 		//所有的文件目录都是一致的
 		//文件名中利用sid唯一确定program的地址。
-		this.sourceFilePath = "./\\data\\toj_problem_" + pid + "\\" + pid + ".in";
-		this.outputFilePath = "./\\data\\toj_problem_" + pid + "\\" + pid + ".out";
-		this.targetFilePath = "./\\data\\toj_problem_" + pid + "\\splitedTestCases";
-		this.rightProPath = "./\\data\\toj_problem_" + pid + "\\programs\\commit_id_" + sid + "\\" + sid + ".src";
+		this.sourceFilePath = new File("./\\data\\toj_problem_" + pid + "\\" + pid + ".in").getCanonicalPath();
+		this.outputFilePath = new File("./\\data\\toj_problem_" + pid + "\\" + pid + ".out").getCanonicalPath();
+		this.targetFilePath = new File("./\\data\\toj_problem_" + pid + "\\splitedTestCases").getCanonicalPath();
+		this.rightProPath = new File("./\\data\\toj_problem_" + pid + "\\programs\\commit_id_" + sid + "\\" + sid + ".src").getCanonicalPath();
 		this.pid = pid;
 		this.res = new StringBuffer();
 		this.res.append("");
