@@ -35,6 +35,22 @@ public abstract class FileKind extends compile {
 		this.res.append("");
 	}
 
+	public FileKind(String pid, String sid) throws IOException {
+		// TODO Auto-generated constructor stub
+		
+		//所有的文件目录都是一致的
+		//文件名中利用sid唯一确定program的地址。
+		this.sourceFilePath = new File("./\\data\\toj_problem_" + pid + "\\" + pid + ".in").getCanonicalPath();
+		this.outputFilePath = new File("./\\data\\toj_problem_" + pid + "\\" + pid + ".out").getCanonicalPath();
+		this.targetFilePath = new File("./\\data\\toj_problem_" + pid + "\\splitedTestCases").getCanonicalPath();
+		this.rightProPath = new File("./\\data\\toj_problem_" + pid + "\\programs\\commit_id_" + sid + "\\" + sid + ".src").getCanonicalPath();
+		//System.out.println("Second compile");
+		this.rightExePath = compile(this.rightProPath);
+		this.pid = pid;
+		this.res = new StringBuffer();
+		this.res.append("");
+	}
+	
 	// default constructor
 	public FileKind() {
 
