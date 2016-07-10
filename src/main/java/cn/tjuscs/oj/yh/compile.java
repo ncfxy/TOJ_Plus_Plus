@@ -317,6 +317,7 @@ public class compile {
 
 	//overload function
 	public static String compile(String file_path){
+		System.out.println(file_path);
 		return compile(file_path, work_dir);
 	}
 	

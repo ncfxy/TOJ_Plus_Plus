@@ -1,6 +1,8 @@
 package cn.tjuscs.oj.dividing;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
@@ -28,6 +30,7 @@ public class KindSentinel extends FileKind {
 		this.outputFilePath = new File("./\\data\\toj_problem_" + pid + "\\" + pid + ".out").getCanonicalPath();
 		this.targetFilePath = new File("./\\data\\toj_problem_" + pid + "\\splitedTestCases").getCanonicalPath();
 		this.rightProPath = new File("./\\data\\toj_problem_" + pid + "\\programs\\commit_id_" + sid + "\\" + sid + ".src").getCanonicalPath();
+		System.out.println("Second compile");
 		this.rightExePath = compile(this.rightProPath);
 		this.pid = pid;
 		this.res = new StringBuffer();
@@ -215,7 +218,7 @@ public class KindSentinel extends FileKind {
 		
 		long prePtr = 0;
 		long curPtr = 0;
-		int index = 1;
+		int index = 0;
 		while(prePtr < sourceFileReader.length()){
 			
 			File inFile = new File(inFileName);
@@ -272,6 +275,12 @@ public class KindSentinel extends FileKind {
 			sampleInputFile.close();
 			
 		}
+		
+		BufferedWriter num = new BufferedWriter(new FileWriter(this.targetFilePath + "\\" + this.pid + "_total.txt"));
+		num.write(String.valueOf(index));
+		num.flush();
+		num.close();
+		
 		
 		sourceFileReader.close();
 		return true;
