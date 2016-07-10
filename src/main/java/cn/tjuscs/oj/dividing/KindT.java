@@ -24,19 +24,8 @@ public class KindT extends FileKind {
 
 	public KindT(String pid, String sid) throws IOException {
 		// TODO Auto-generated constructor stub
-		
-		//所有的文件目录都是一致的
-		//文件名中利用sid唯一确定program的地址。
-		this.sourceFilePath = new File(".\\data\\toj_problem_" + pid + "\\" + pid + ".in").getCanonicalPath();
-		this.outputFilePath = new File(".\\data\\toj_problem_" + pid + "\\" + pid + ".out").getCanonicalPath();
-		this.targetFilePath = new File(".\\data\\toj_problem_" + pid + "\\splitedTestCases").getCanonicalPath();
-		this.rightProPath = new File(".\\data\\toj_problem_" + pid + "\\programs\\commit_id_" + sid + "\\" + sid + ".src").getCanonicalPath();
-		System.out.println("First compile");
-		this.rightExePath = compile(this.rightProPath);
+		super(pid, sid);
 		ExecuteWindowsCommand.execute(this.rightExePath + " < " + this.sourceFilePath + " > " + this.outputFilePath);
-		this.pid = pid;
-		this.res = new StringBuffer();
-		this.res.append("");
 	}
 
 	@Override
