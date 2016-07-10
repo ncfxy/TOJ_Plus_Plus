@@ -104,6 +104,10 @@ public class KindEOF extends FileKind{
 		}
 		IFin.close();
 		OFin.close();
+		BufferedWriter num = new BufferedWriter(new FileWriter(this.targetFilePath + "\\" + this.pid + "_total.txt"));
+		num.write(String.valueOf(FileIndex));
+		num.flush();
+		num.close();
 		//return DonePaths;
 		return false;
 	}
