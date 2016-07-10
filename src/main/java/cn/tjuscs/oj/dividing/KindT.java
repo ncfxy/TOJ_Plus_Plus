@@ -27,10 +27,11 @@ public class KindT extends FileKind {
 		
 		//所有的文件目录都是一致的
 		//文件名中利用sid唯一确定program的地址。
-		this.sourceFilePath = new File("./\\data\\toj_problem_" + pid + "\\" + pid + ".in").getCanonicalPath();
-		this.outputFilePath = new File("./\\data\\toj_problem_" + pid + "\\" + pid + ".out").getCanonicalPath();
-		this.targetFilePath = new File("./\\data\\toj_problem_" + pid + "\\splitedTestCases").getCanonicalPath();
-		this.rightProPath = new File("./\\data\\toj_problem_" + pid + "\\programs\\commit_id_" + sid + "\\" + sid + ".src").getCanonicalPath();
+		this.sourceFilePath = new File(".\\data\\toj_problem_" + pid + "\\" + pid + ".in").getCanonicalPath();
+		this.outputFilePath = new File(".\\data\\toj_problem_" + pid + "\\" + pid + ".out").getCanonicalPath();
+		this.targetFilePath = new File(".\\data\\toj_problem_" + pid + "\\splitedTestCases").getCanonicalPath();
+		this.rightProPath = new File(".\\data\\toj_problem_" + pid + "\\programs\\commit_id_" + sid + "\\" + sid + ".src").getCanonicalPath();
+		System.out.println("First compile");
 		this.rightExePath = compile(this.rightProPath);
 		ExecuteWindowsCommand.execute(this.rightExePath + " < " + this.sourceFilePath + " > " + this.outputFilePath);
 		this.pid = pid;
@@ -42,8 +43,8 @@ public class KindT extends FileKind {
 	int judgeKind() throws IOException {
 		// TODO Auto-generated method stub
 
-		inputFileRowLength = outputFileRowLength = curInLen = curOutLen = prvInLen = prvOutLen = FileIndex = 0;
-
+		inputFileRowLength = outputFileRowLength = 0;
+		curInLen = curOutLen = prvInLen = prvOutLen = FileIndex = 0;
 		//读取.in文件的第一行并储存在inputFileLines数组中
 		BufferedReader inputBufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(sourceFilePath)));
 		inputFileLines[inputFileRowLength++] = inputBufferedReader.readLine();
@@ -110,10 +111,11 @@ public class KindT extends FileKind {
 //		long a = System.currentTimeMillis();
 		inputFileLines[0] = changeFirstNum(getFirst(inputFileLines[0]), inputFileLines[0], 1);
 		String arg = new String(inputFileLines[0]);
+
 		curInLen = 1;
 		prvInLen = 1;
 		
-		for (int i = 1; i <= inputFileRowLength; i++) {
+		for (int i = 1; i < inputFileRowLength; i++) {
 			for (; curInLen <= i; curInLen++) {
 				arg = arg + "\n" + inputFileLines[curInLen];
 			}
@@ -160,6 +162,12 @@ public class KindT extends FileKind {
 			}
 			getOut.close();
 		}
+		BufferedWriter num = new BufferedWriter(new FileWriter(this.targetFilePath + "\\" + this.pid + "_total.txt"));
+		System.out.println(FileIndex);
+		num.write(String.valueOf(FileIndex));
+		num.flush();
+		num.close();
+		
 //		long e = System.currentTimeMillis(); // e-a stands for cost time
 		return true;
 //		System.out.println(String.valueOf(b - a));

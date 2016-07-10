@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 def getLineIndex(line):
 	result = ''
 	for i in range(10,15):
