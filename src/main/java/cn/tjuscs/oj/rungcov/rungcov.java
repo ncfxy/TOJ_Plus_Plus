@@ -6,13 +6,18 @@ import cn.tjuscs.oj.cmdHelper.ExecuteWindowsCommand;
 import java.io.*;
 
 public class rungcov {
-	public static void runAndGetMat(int sid, int pid) throws NumberFormatException, IOException{
+	
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		runAndGetMat("testid","2800");
+	}
+	public static void runAndGetMat(String sid, String pid) throws NumberFormatException, IOException{
 		System.out.println("haha");
 		//sid = "1131123";
 		//pid = "1007";
-		String dataPath = "./data/toj_problem"+pid;
-		String casenumFileName = dataPath+"/splitedTestCases/caseNum.in";
-		String inputFileName = dataPath+"/splitedTestCases/test";
+		String dataPath = "./data/toj_problem_"+pid;
+		dataPath = new File(dataPath).getCanonicalPath();
+		String casenumFileName = dataPath+"/splitedTestCases/2800_total.txt";
+		String inputFileName = dataPath+"/splitedTestCases/2800_";
 		String outputFileName = dataPath+"/splitedTestCases/output";
 		String srcFileName = dataPath+"/programs/commit_id_"+sid+"/"+sid;
 		FileReader cnst = new FileReader(casenumFileName);
@@ -26,7 +31,7 @@ public class rungcov {
 			ExecuteWindowsCommand.execute("ren "+srcFileName+".cpp.gcov "+srcFileName+i+".cpp.gcov");
 		}
 		
-		ExecuteWindowsCommand.execute("python ./pyscripts/compfile.py "+(dataPath+"/programs/commit_id_"+sid+"/outputs.csv ")+(dataPath+"/splitedTestCases/ans")+(outputFileName)+casenum);
-		ExecuteWindowsCommand.execute("python ./pyscripts/getMatrixFromGcov.py "+srcFileName+" 1 "+casenum);
+		ExecuteWindowsCommand.execute("python ./linux和python脚本/compfile.py "+(dataPath+"/programs/commit_id_"+sid+"/outputs.csv ")+(dataPath+"/2800.out")+(outputFileName)+casenum);
+		ExecuteWindowsCommand.execute("python ./linux和python脚本/getMatrixFromGcov.py "+srcFileName+" 1 "+casenum);
 	}
 }
