@@ -1,0 +1,21 @@
+        -:    0:Source:G:/SI/oj/TOJ_Plus_Plus/data/toj_problem_2800/programs/commit_id_testid/testid.cpp
+        -:    0:Graph:G:\SI\oj\TOJ_Plus_Plus\data\toj_problem_2800/programs/commit_id_testid/testid.gcno
+        -:    0:Data:G:\SI\oj\TOJ_Plus_Plus\data\toj_problem_2800/programs/commit_id_testid/testid.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include<iostream>
+        -:    2:
+        -:    3:using namespace std;
+        -:    4:
+        1:    5:int main()
+        -:    6:{
+        -:    7:	int n;
+        1:    8:	cin>>n;
+        3:    9:	while (n--)
+        -:   10:	{
+        -:   11:		int m;
+        1:   12:		cin>>m;
+        1:   13:		cout<<m*m-m+1<<' '<<m*m+m-1<<endl;
+        -:   14:	}
+        1:   15:	return 0;
+        3:   16:}Мо
