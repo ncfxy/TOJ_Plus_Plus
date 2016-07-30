@@ -10,7 +10,10 @@ int main()
 	{
 		int m;
 		cin>>m;
-		cout<<m*m-m+1<<' '<<m*m+m-1<<endl;
+		if(m % 2)
+            cout<<m*m-m+1<<' '<<m*m+m-1<<endl;
+		else
+            cout<<m*m-m+1<<' '<<m*m+m-1<<endl;
 	}
 	return 0;
 }
