@@ -1,6 +1,7 @@
 package com.ncfxy.FaultLocalization;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.ncfxy.FaultLocalization.methods.FaultLocalizationMethod;
@@ -20,6 +21,9 @@ public class FaultLocalization {
 		experiment.readInfoFromFile();
 		FaultLocalizationMethod method = new Tarantula();
 		List<Integer> list = method.getResult(experiment);
+		for(int i = 0;i < list.size();i++){
+			list.set(i, experiment.getLocationsOfExecutableEntities().get(list.get(i)));
+		}
 		return list;
 	}
 
