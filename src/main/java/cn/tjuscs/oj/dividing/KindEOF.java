@@ -27,16 +27,7 @@ public class KindEOF extends FileKind{
 
 	public KindEOF(String pid, String sid) throws IOException {
 		// TODO Auto-generated constructor stub
-		
-		//所有的文件目录都是一致的
-		//文件名中利用sid唯一确定program的地址。
-		this.sourceFilePath = new File("./\\data\\toj_problem_" + pid + "\\" + pid + ".in").getCanonicalPath();
-		this.outputFilePath = new File("./\\data\\toj_problem_" + pid + "\\" + pid + ".out").getCanonicalPath();
-		this.targetFilePath = new File("./\\data\\toj_problem_" + pid + "\\splitedTestCases").getCanonicalPath();
-		this.rightProPath = new File("./\\data\\toj_problem_" + pid + "\\programs\\commit_id_" + sid + "\\" + sid + ".src").getCanonicalPath();
-		this.pid = pid;
-		this.res = new StringBuffer();
-		this.res.append("");
+		super(pid, sid);
 	}
 
 	@Override
@@ -104,6 +95,10 @@ public class KindEOF extends FileKind{
 		}
 		IFin.close();
 		OFin.close();
+		BufferedWriter num = new BufferedWriter(new FileWriter(this.targetFilePath + "\\" + this.pid + "_total.txt"));
+		num.write(String.valueOf(FileIndex));
+		num.flush();
+		num.close();
 		//return DonePaths;
 		return false;
 	}
