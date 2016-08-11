@@ -21,14 +21,14 @@ def getString(num):
 		return str(num)
 
 def getTestResult(sourceDir,x):
-	resultFileName = "G:/SI/oj/TOJ_Plus_Plus/outputs.csv"
+	resultFileName = "G:/SI/oj/TOJ_Plus_Plus/data/toj_problem_2800/programs/commit_id_testid/outputs.csv"
 	resultFile = open(resultFileName, 'r')
 	resultContent = resultFile.readlines()
 	return resultContent[x-1][0]
 
 
 def getMatrixFromGcov(version,programName, testNum):
-	sourceDir = "."
+	sourceDir = "G:/SI/oj/TOJ_Plus_Plus/data/toj_problem_2800/programs/commit_id_testid"
 	outputFileName = sourceDir + "/coverage_matrix.txt"
 	errorTestCasesFileName = "./errorTestCases"
 	outputFile = open(outputFileName, 'w')

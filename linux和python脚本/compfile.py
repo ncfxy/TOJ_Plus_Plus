@@ -25,7 +25,7 @@ writer = csv.writer(csvfile, delimiter=' ',quotechar='|', quoting=csv.QUOTE_MINI
 data = []
 
 for i in range(0,caseNum):
-    file1 = open(sourcedir+ansFileName,'r')
+    file1 = open(sourcedir+ansFileName+'_'+str(i)+'.out','r')
     file2 = open(sourcedir+outFileName+str(i)+'.out','r')
     same = cmpFile(file1,file2)
     if same == True:
