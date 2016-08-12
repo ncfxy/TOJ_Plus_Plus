@@ -80,7 +80,7 @@ public class KindSentinel extends FileKind {
 		
 		while(inputFileReader.getFilePointer() < inputFileReader.length()){
 			tmp = inputFileReader.readLine().trim();
-			if(tmp != ""){
+			if(!tmp.isEmpty()){
 				res.append(tmp);
 				res.append(" ");
 				flag = true;
