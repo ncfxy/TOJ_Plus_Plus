@@ -69,7 +69,7 @@ public class KindEOF extends FileKind{
 			fout.close();
 			
 			ExecuteWindowsCommand.execute(ExName+" < tempFile.in > tempFile.out" + "\n");
-			Thread.sleep(1000);
+//			Thread.sleep(1000);
 			Character terminate;
 			terminate = 3;
 			ExecuteWindowsCommand.execute(terminate.toString());
@@ -78,7 +78,7 @@ public class KindEOF extends FileKind{
 				System.out.println(tmp[curOutLen]);
 				curOutLen++;
 			}
-			System.out.println(curOutLen);
+//			System.out.println(curOutLen);
 			if(curOutLen > prvOutLen && isprefix()){
 				fout = new BufferedWriter(new FileWriter(Split+FileIndex+".out"));
 				DonePaths.add(new String(Split+FileIndex+".out"));

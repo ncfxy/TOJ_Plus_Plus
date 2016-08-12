@@ -1,5 +1,10 @@
 # split Files
 data/toj_problem_*/splitedTestCases
+*.exe
+*.gcov
+*.gcno
+*.gcda
+coverage_matrix.txt
 
 #################
 ## Eclipse

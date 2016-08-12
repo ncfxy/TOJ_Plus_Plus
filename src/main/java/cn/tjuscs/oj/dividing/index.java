@@ -12,8 +12,8 @@ public class index {
 //		File test = new File(temp);
 //		System.out.println(test.getCanonicalPath());
 		// TODO Auto-generated method stub
-		
-		String pid = new String("2800");
+
+		String pid = new String("1171");
 		String sid = new String("testid");
 		boolean result = dividing (pid, sid);
 		if(result == false)
@@ -29,7 +29,14 @@ public class index {
 			KindT kindt = new KindT(pid, sid);
 			kind = kindt.judgeKind();
 			if(kind == kindt.T_Kind){
+				System.out.println("T");
+//				try{
+//					Thread.sleep(100000);
+//				}catch(Exception e){
+//					System.exit(0);//退出程序
+//					}
 				kindt.splitFile();
+				System.out.println("T");
 				return true;
 			}
 			else{
@@ -41,12 +48,22 @@ public class index {
 		}
 		
 		//尝试按照哨兵的格式处理文件。
+		//1090出现误判情况
+		//1100无法正确拆分
+		//1169无法正确拆分
+		//1171太慢了，一直卡在 < splitedTestCasessample1.in > solitedTestCasesample1.out
 		try {
 			KindSentinel kindSentinel = new KindSentinel(pid, sid);
 			kind = kindSentinel.judgeKind();
 			if(kind == kindSentinel.Sentinel_Kind){
-				System.out.println("is sentinel");
+//				System.out.println("is sentinel");
+//				try{
+//					Thread.sleep(100000);
+//				}catch(Exception e){
+//					System.exit(0);//退出程序             
+//					}
 				kindSentinel.splitFile();
+				System.out.println("is sentinel");
 				return true;
 			}
 			else{
@@ -58,11 +75,19 @@ public class index {
 		}
 
 		//尝试按照EOF处理文件
+		//1090无法正确拆分
 		try {
 			KindEOF kindeof = new KindEOF(pid, sid);
 			kind = kindeof.judgeKind();
 			if(kind == kindeof.EOF_Kind){
+//				System.out.println("is eof");
+//				try{
+//					Thread.sleep(100000);
+//				}catch(Exception e){
+//					System.exit(0);//退出程序
+//					}
 				kindeof.splitFile();
+				System.out.println("eof");
 				return true;
 			}
 			else{
