@@ -9,26 +9,26 @@ def getLineIndex(line):
 	return str(result)
 
 def getString(num):
-    if num < 10:
-	return '0000'+str(num)
-    elif num < 100:
-	return '000'+str(num)
-    elif num < 1000:
-	return '00'+str(num)
-    elif num < 10000:
-	return '0'+str(num)
-    else:
-	return str(num)
+	if num < 10:
+		return '0000'+str(num)
+	elif num < 100:
+		return '000'+str(num)
+	elif num < 1000:
+		return '00'+str(num)
+	elif num < 10000:
+		return '0'+str(num)
+	else:
+		return str(num)
 
 def getTestResult(sourceDir,x):
-	resultFileName = sourceDir+"/outputs/outputs.csv"
+	resultFileName = "G:/SI/oj/TOJ_Plus_Plus/data/toj_problem_2800/programs/commit_id_testid/outputs.csv"
 	resultFile = open(resultFileName, 'r')
 	resultContent = resultFile.readlines()
 	return resultContent[x-1][0]
 
 
 def getMatrixFromGcov(version,programName, testNum):
-	sourceDir = "."
+	sourceDir = "G:/SI/oj/TOJ_Plus_Plus/data/toj_problem_2800/programs/commit_id_testid"
 	outputFileName = sourceDir + "/coverage_matrix.txt"
 	errorTestCasesFileName = "./errorTestCases"
 	outputFile = open(outputFileName, 'w')
@@ -39,7 +39,7 @@ def getMatrixFromGcov(version,programName, testNum):
 	outputStr += ('#LOES# ')
 	# 获取所有可执行行号
 	executableLineNum = 0
-	fileName = sourceDir + "/" + programName + str(1) + ".cpp.gcov"
+	fileName = programName + str(1) + ".cpp.gcov"
 	inputFile = open(fileName, 'r')
 	for line in inputFile:
 		if line[13] == ' ' and line[14] == '0':
@@ -54,9 +54,10 @@ def getMatrixFromGcov(version,programName, testNum):
 	outputStr += ('#NOES# ' + str(executableLineNum) + '\n')
 	outputStr += ('#NOF_# '+'\n')
 	outputStr += ('#LOFS# '+'\n')
-	for x in range(1,int(testNum)+1):
-		#outputStr += ('#CASE#'+getString(x)+'#R'+ getTestResult(sourceDir,x)+'# ')
-		fileName = sourceDir + "/" + programName + str(x) + ".cpp.gcov"
+	for x in range(0,int(testNum)):
+		outputStr += ('#CASE#'+getString(x)+'#R'+ getTestResult(sourceDir,x)+'# ')
+		fileName = programName + str(x) + ".cpp.gcov"
+		print(fileName)
 		if os.path.exists(fileName):
 			inputFile = open(fileName, 'r')
 		else:
@@ -66,11 +67,15 @@ def getMatrixFromGcov(version,programName, testNum):
 
 		lineIndex = 1
 		for line in inputFile:
+			if len(line)<16:
+				continue			
+			print(line)
 			if line[13] == ' ' and line[14] == '0':
 				pass
 			else:
 				if line[9] == ':' and line[15] == ':':
 					if line[8] != '-':
+						pass;
 						#if lineIndex > 1:
 							#outputStr += (',')
 						if line[8] != '#':
@@ -78,10 +83,11 @@ def getMatrixFromGcov(version,programName, testNum):
 							lineIndex = lineIndex + 1
 						else:
 							outputStr += ('0 ')
-	    					lineIndex = lineIndex + 1
+						lineIndex = lineIndex + 1
 		outputStr += ('\n')
 		inputFile.close()
 	outputFile.write(outputStr)
+	print(outputStr)
 	outputFile.flush()
 	errorTestCasesFile.write('\n')
 	errorTestCasesFile.flush()
@@ -94,7 +100,7 @@ def getMatrixFromGcov(version,programName, testNum):
 import sys
 import os
 if len(sys.argv) < 3:
-    print '\nParameters is not enough.Please input using this pattern: \n\t\"python getMatrixFromGcov programName versionNum testCaseNum\"\n'
+    print ('\nParameters is not enough.Please input using this pattern: \n\t\"python getMatrixFromGcov programName versionNum testCaseNum\"\n')
     sys.exit(0)
 programName = sys.argv[1] #programName
 lenn = sys.argv[2] # number of versions

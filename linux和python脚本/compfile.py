@@ -15,25 +15,25 @@ ansFileName = 'ans'
 outFileName = 'out'
 caseNum = 3
 '''
-sourcedir = '../'
+sourcedir = ''
 
 def cmpFile(f1,f2):
     return f1.read() == f2.read()
 
-csvfile = open(csvFileName+'.csv','wb')
+csvfile = open(csvFileName,'wb')
 writer = csv.writer(csvfile, delimiter=' ',quotechar='|', quoting=csv.QUOTE_MINIMAL)
 data = []
 
-for i in range(1,caseNum+1):
-    file1 = open(sourcedir+ansFileName+str(i)+'.txt','r')
-    file2 = open(sourcedir+outFileName+str(i)+'.txt','r')
+for i in range(0,caseNum):
+    file1 = open(sourcedir+ansFileName+'_'+str(i)+'.out','r')
+    file2 = open(sourcedir+outFileName+str(i)+'.out','r')
     same = cmpFile(file1,file2)
     if same == True:
-        data = data + list('1')
+        data.append(('1'))
     else:
-        data = data + list('0')
+        data.append(('0'))
 
-print data
+print (data)
 
 for e in data:
     writer.writerow(e)
