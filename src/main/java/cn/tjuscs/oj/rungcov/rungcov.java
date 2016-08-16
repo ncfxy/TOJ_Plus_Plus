@@ -46,14 +46,8 @@ public class rungcov {
 //			} 
 			ExecuteWindowsCommand.execute("ren "+srcFileName+".cpp.gcov "+sid+i+".cpp.gcov");
 		}
-<<<<<<< HEAD
-		
-		ExecuteWindowsCommand.execute("python ./linux和python脚本/compfile.py "+(dataPath+"/programs/commit_id_"+sid+"/outputs.csv ")+(dataPath+"/2800.out")+(outputFileName)+casenum);
-		ExecuteWindowsCommand.execute("python ./linux和python脚本/getMatrixFromGcov.py "+srcFileName+" 1 "+casenum);
-=======
 		System.out.println("hah");
 		ExecuteWindowsCommand.execute("python "+workpath+"\\linux和python脚本\\compfile.py "+(dataPath+"\\programs\\commit_id_"+sid+"\\outputs.csv ")+(dataPath+"\\splitedTestCases\\" + pid +" ")+(outputFileName)+" "+casenum);
 		ExecuteWindowsCommand.execute("python "+workpath+"\\linux和python脚本\\getMatrixFromGcov.py "+srcFileName+" 1 "+casenum);
->>>>>>> 084785175837a0c96c19dc087ab53490ce74eebc
 	}
 }
