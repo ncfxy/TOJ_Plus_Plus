@@ -13,7 +13,7 @@ public class index {
 //		System.out.println(test.getCanonicalPath());
 		// TODO Auto-generated method stub
 
-		String pid = new String("1171");
+		String pid = new String("1169");
 		String sid = new String("testid");
 		boolean result = dividing (pid, sid);
 		if(result == false)
@@ -23,6 +23,7 @@ public class index {
 	public static boolean dividing(String pid, String sid) throws IOException{
 					
 		int kind;
+		
 		
 		//尝试按照T的格式处理文件。
 		try {

@@ -142,12 +142,13 @@ public class Experiment {
 			locationsOfExecutableEntities.add(Integer.parseInt(s));
 		}
 		numberOfExecutableEntities = Integer.parseInt(lines.get(3).substring(7));
-		numberOfFaults = Integer.parseInt(lines.get(4).substring(7));
+		//numberOfFaults = Integer.parseInt(lines.get(4).substring(7));
 		tmp = lines.get(5).substring(7);
 		String tmps2[] = tmp.split(" ");
 		locationsOfFaults = new ArrayList<Integer>();
 		indexOfFaults = new ArrayList<Integer>();
 		for (String s : tmps2) {
+			if(s.isEmpty()) continue;
 			int tempInt = Integer.parseInt(s);
 			locationsOfFaults.add(tempInt);
 			indexOfFaults.add(findFirstLessEqualThan(tempInt));
@@ -308,7 +309,7 @@ public class Experiment {
 		buffer.append("#Ver_# " + programName + "_" + version + "\n");
 		buffer.append("#NOTS# " + numberOfTestCases + "\n");
 		buffer.append("#NOES# " + numberOfExecutableEntities + "\n");
-		buffer.append("#NOF_# " + numberOfFaults + "\n");
+		//buffer.append("#NOF_# " + numberOfFaults + "\n");
 		buffer.append("#LOFS#");
 		for (Integer i = 0; i < locationsOfFaults.size(); i++) {
 			buffer.append(" " + findFirstLessEqualThan(locationsOfFaults.get(i)));
@@ -360,11 +361,11 @@ public class Experiment {
 	public Integer getNumberOfExecutableEntities() {
 		return numberOfExecutableEntities;
 	}
-
+/*
 	public Integer getNumberOfFaults() {
 		return numberOfFaults;
 	}
-
+*/
 	public List<Integer> getLocationsOfFaults() {
 		return locationsOfFaults;
 	}

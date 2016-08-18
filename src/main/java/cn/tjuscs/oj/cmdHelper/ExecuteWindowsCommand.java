@@ -33,7 +33,7 @@ public class ExecuteWindowsCommand {
 		StringBuilder results = new StringBuilder();
 		try {
 			String newCommand = "cmd /c " + command;
-			System.out.println(newCommand);
+//			System.out.println(newCommand);
 			p = rn.exec(newCommand);
 			StreamGobbler dealInputStream = new StreamGobbler(p.getInputStream(), "STDOUT", results);
 			StreamGobbler dealOutputStream = new StreamGobbler(p.getErrorStream(), "ERROR", results);

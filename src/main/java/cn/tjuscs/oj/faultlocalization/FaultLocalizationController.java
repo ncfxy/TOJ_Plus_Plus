@@ -30,7 +30,7 @@ public class FaultLocalizationController {
 	}
 
 	public static void main(String[] args) {
-		FaultLocalizationController haha = new FaultLocalizationController("1007", "1131123");
+		FaultLocalizationController haha = new FaultLocalizationController("2800", "123123");
 		List<Integer> result = haha.getCodeSuspiciousList();
 		for(Integer x:result){
 			System.out.println("line: " + x);

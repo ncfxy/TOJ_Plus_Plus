@@ -25,6 +25,7 @@ public class KindT extends FileKind {
 	public KindT(String pid, String sid) throws IOException {
 		// TODO Auto-generated constructor stub
 		super(pid, sid);
+		compile(this.rightProPath);
 		ExecuteWindowsCommand.execute(this.rightExePath + " < " + this.sourceFilePath + " > " + this.outputFilePath);
 	}
 

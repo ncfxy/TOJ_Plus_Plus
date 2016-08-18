@@ -16,7 +16,7 @@ public class KindEOF extends FileKind{
 	public String[] opt = new String[MAX_LINE];
 	public String[] tmp = new String[MAX_LINE];
 	public String tmpFileName = "tempFile.in";
-	public String Split = "split";
+	public String Split = this.targetFilePath + "\\" + this.pid + "_";
 	public int IFLen,OFLen,curInLen,curOutLen,prvInLen,prvOutLen,FileIndex;
 	public List<String> DonePaths;
 	
@@ -39,10 +39,10 @@ public class KindEOF extends FileKind{
 	@Override
 	boolean splitFile() throws IOException, InterruptedException {
 		// TODO Auto-generated method stub
-		String  ExName = compile(this.rightProPath);
+		String  ExName = this.rightExePath;
 		IFLen = OFLen = curInLen = curOutLen = prvInLen = prvOutLen = FileIndex = 0;
-		FileReader ifst = new FileReader(sourceFilePath);
-		FileReader ofst = new FileReader(outputFilePath);
+		FileReader ifst = new FileReader(this.sourceFilePath);
+		FileReader ofst = new FileReader(this.outputFilePath);
 		BufferedReader IFin = new BufferedReader(ifst);
 		BufferedReader OFin = new BufferedReader(ofst);
 		while((ipt[IFLen]=IFin.readLine()) != null){
@@ -75,21 +75,23 @@ public class KindEOF extends FileKind{
 			ExecuteWindowsCommand.execute(terminate.toString());
 			BufferedReader getOut = new BufferedReader(new FileReader("tempFile.out"));
 			while( (tmp[curOutLen]=getOut.readLine()) != null ){
-				System.out.println(tmp[curOutLen]);
+				//System.out.println(tmp[curOutLen]);
 				curOutLen++;
 			}
 //			System.out.println(curOutLen);
 			if(curOutLen > prvOutLen && isprefix()){
-				fout = new BufferedWriter(new FileWriter(Split+FileIndex+".out"));
-				DonePaths.add(new String(Split+FileIndex+".out"));
+				fout = new BufferedWriter(new FileWriter(Split+ FileIndex+".in"));
+				//DonePaths.add(new String(Split+FileIndex+".out"));
 				for(;prvInLen < curInLen;prvInLen++){
+//					System.out.println("haha");
 					fout.write(ipt[prvInLen]);
 					fout.write("\n");
 					fout.flush();
 				}
+				ExecuteWindowsCommand.execute(this.rightExePath + " < " + Split + FileIndex + ".in" + " > " +  Split + FileIndex + ".out");
 				FileIndex++;
 				prvOutLen = curOutLen;
-				System.out.println("A file is created");
+//				System.out.println("A file is created");
 			}
 			getOut.close();
 		}
@@ -99,6 +101,7 @@ public class KindEOF extends FileKind{
 		num.write(String.valueOf(FileIndex));
 		num.flush();
 		num.close();
+		
 		//return DonePaths;
 		return false;
 	}
