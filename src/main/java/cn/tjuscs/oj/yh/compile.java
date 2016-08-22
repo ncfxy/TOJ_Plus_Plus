@@ -142,8 +142,8 @@ public class compile {
 	//main compile function
 	public static String compile(String file_path, String desti_path) {
 		//check message
-		System.out.println("Please ensure you have set the gpp_path"
-				+ " or your computer can directly use g++ command in the CMD.exe");
+//		System.out.println("Please ensure you have set the gpp_path"
+//				+ " or your computer can directly use g++ command in the CMD.exe");
 		
 		if(desti_path != ""){
 			if(check()){
@@ -317,7 +317,7 @@ public class compile {
 
 	//overload function
 	public static String compile(String file_path){
-		System.out.println(file_path);
+//		System.out.println(file_path);
 		return compile(file_path, work_dir);
 	}
 	

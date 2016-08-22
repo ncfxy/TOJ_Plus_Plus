@@ -13,7 +13,7 @@ public class index {
 //		System.out.println(test.getCanonicalPath());
 		// TODO Auto-generated method stub
 
-		String pid = new String("1169");
+		String pid = new String("2800");
 		String sid = new String("testid");
 		boolean result = dividing (pid, sid);
 		if(result == false)
