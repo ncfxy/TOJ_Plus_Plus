@@ -23,7 +23,8 @@ public class rungcov {
 		String inputFileName = dataPath+"\\splitedTestCases\\" + pid + "_";
 		String outputFileName = dataPath+"\\splitedTestCases\\output";
 		String srcFileName = dataPath+"\\programs\\commit_id_"+sid+"\\"+sid;
-		//ExecuteWindowsCommand.execute("copy "+srcFileName+" "+sid+".cpp");
+		String tmpPath = dataPath +"\\programs\\commit_id_"+sid;
+		ExecuteWindowsCommand.execute("copy "+srcFileName+".src "+srcFileName+".cpp");
 		//srcFileName = sid+".cpp";
 		FileReader cnst = new FileReader(casenumFileName);
 		BufferedReader fin = new BufferedReader(cnst);
@@ -53,7 +54,7 @@ public class rungcov {
 //=======
 		System.out.println("hah");
 		ExecuteWindowsCommand.execute("python "+workpath+"\\linux和python脚本\\compfile.py "+(dataPath+"\\programs\\commit_id_"+sid+"\\outputs.csv ")+(dataPath+"\\splitedTestCases\\" + pid +" ")+(outputFileName)+" "+casenum);
-		ExecuteWindowsCommand.execute("python "+workpath+"\\linux和python脚本\\getMatrixFromGcov.py "+srcFileName+" 1 "+casenum);
+		ExecuteWindowsCommand.execute("python "+workpath+"\\linux和python脚本\\getMatrixFromGcov.py "+tmpPath+" "+sid+" 1 "+casenum);
 
 	}
 }
