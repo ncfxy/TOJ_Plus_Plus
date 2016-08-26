@@ -206,7 +206,7 @@ public class compile {
 			}
 			//linux
 			else{
-				if(gpp_path != ""){
+				if(gpp_path == ""){
 					compileCmd = "g++ -o " + to + " " + from;
 				}
 				else{
@@ -238,27 +238,21 @@ public class compile {
 			String src_tmp = file_path.substring(0, src_dot);
 			String src_newfile = src_tmp + "_src.cpp";
 			ChangeFile.changefile(file_path, src_tmp);
-			String from = src_newfile;
-			String to = desti_path;
+			String from = src_newfile, to = desti_path;
 			if(to == ""){
 				to = src_tmp;
 			}
 			else{
-				if(to.endsWith("\\") || to.endsWith("/")){
+				if(to.endsWith("\\") || to.endsWith("/"))
 					to += filename;
-				}
-				else if(check()){
+				else if(check())
 					to += ("\\" + filename);
-				}
-				else{
+				else
 					to += ("/" + filename);
-				}
 			}
 			//windows
 			if(check()){
 				String src_cmd;
-				//String src_cmd = "copy " + file_path + " " + src_newfile;
-				//String src_ret = ExecuteWindowsCommand.execute(src_cmd);
 				String compileCmd = "";
 				if(gpp_path == ""){
 					compileCmd = "g++ " + from + " -o " + to;
@@ -278,15 +272,11 @@ public class compile {
 			}
 			//linux
 			else{
-				String src_cmd = "cp " + file_path + " " + src_newfile;
-				String src_ret = ExecuteLinuxCommand.execute(src_cmd);
-				String compileCmd = "";
-				if(gpp_path != ""){
+				String src_cmd = "", src_ret = "", compileCmd = "";
+				if(gpp_path == "")
 					compileCmd = "g++ -o " + to + " " + from;
-				}
-				else{
+				else
 					compileCmd = gpp_path + " -o " + to + " " + from;
-				}
 				String retCmd = ExecuteLinuxCommand.execute(compileCmd);
 				String errorMsg = "\nThe result:\n" 
 						+ retCmd
@@ -294,7 +284,7 @@ public class compile {
 						+ "\t1.check the gpp_path\n"
 						+ "\t2.check the file_path\n";
 				System.out.println(errorMsg);
-				src_cmd = "del " + src_newfile;
+				src_cmd = "rm " + src_newfile;
 				retCmd = ExecuteLinuxCommand.execute(src_cmd);
 			}
 			return to;
