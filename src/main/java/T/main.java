@@ -14,7 +14,6 @@ import java.io.Reader;
 import java.sql.Date;
 import java.sql.Time;
 
-import com.sun.xml.internal.bind.v2.runtime.RuntimeUtil.ToStringAdapter;
 
 import cn.tjuscs.oj.cmdHelper.ExecuteWindowsCommand;
 
